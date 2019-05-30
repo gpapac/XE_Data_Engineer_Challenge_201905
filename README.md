@@ -28,5 +28,5 @@ Some additional comments for the implementation:
 
 * In the Classifieds table, the offset of each record is also stored. This is used for "offset persistence" (instead of the Kafka server)
 
-* The reading and loading of the 7208 records in a local MySQL database only took about 20seconds while in the MySQL server given it takes many minutes.
+* The reading and loading of the 7208 records in a local MySQL database only took about 20seconds while in the MySQL server given, takes many minutes.
 
