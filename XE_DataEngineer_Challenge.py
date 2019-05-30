@@ -106,7 +106,7 @@ def main():
             consumer.seek_to_beginning()
         else:
             ### if the variable last_offset_in_db is >= 0, seek the next offset in KafkaConsumer and start from there
-            print( last_offset_in_db+1)
+            print("Start reading from offset: "+ str(last_offset_in_db+1))
             consumer.seek(topic_partition_0,last_offset_in_db+1)   
 
         ### Declare the 2 insert commands, one for the records having ad_type="Free" (from which all the fields related to the payment are missing) and one for the other classifieds
@@ -183,7 +183,7 @@ def main():
             #    break
 
         if imsg==0:
-            print("No Kafka messages found")
+            print("No new Kafka messages found")
         else:
             if 'db' in locals():
                 if db.is_connected():   
