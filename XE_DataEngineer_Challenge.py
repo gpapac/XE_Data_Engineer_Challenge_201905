@@ -4,7 +4,7 @@
 ### Every time it starts it reads the maximum offset of the records already in the Classifieds table, and starts reading the Kafka messages after this offset (so it doesn't use Kafka for offset persistence).
 ### The process runs continuously. A timeout is used for the Kafka consumer in order to stop temporarily the reading of new messages if no new messages arrive for some time.
 ### In this case it waits for [var_retry_after] seconds and then retry reading messages from Kafka.
-### The above variables are defined at the beginning of main method.
+### The above variables are defined at the beginning of main method and can be adjusted according to the final environment.
 ### The database connection settings are defined in the corresponding line of the function: get_db_connection
 ### The Kafka connection settings are defined in the corresponding line of the main method.
 ### The program logs the errors and warnings in a log file XE_DataEng_Chal.log in the same directory as this program.
@@ -78,6 +78,7 @@ def read_max_db_offset():
   
 def main():
     
+    ### The values of many of the variables below, will have to be adjusted according to the final environment.
     ### Define the timeout for waiting for new Kafka messages
     var_kafka_consumer_timeout=5000 # 5000=5seconds
     ### Define the time to wait before retrying to read new messages from Kafka
@@ -88,6 +89,8 @@ def main():
     table_name='Classifieds'
     ### Define every how many records to commit the changes in the database (for performance reasons we do not commit every record). Even values of 1000 are suitable for fast dbs.
     commit_every_x_recs=100
+ 
+ 
  
     last_offset_in_db=-1
     while True:
