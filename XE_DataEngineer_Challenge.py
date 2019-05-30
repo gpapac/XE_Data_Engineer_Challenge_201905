@@ -136,6 +136,7 @@ def main():
             db = get_db_connection()
             is_free=-1
             try:
+                ### Construct the tuple with the data to be inserted, depending on the ad_type of the classified
                 if msg_json_data['ad_type']=='Free':
                     data1 =  (msg_json_data['id'], msg_json_data['customer_id'], msg_json_data['created_at'][:19], msg_json_data['text'], msg_json_data['ad_type'], message.offset)
                     is_free=1
@@ -151,6 +152,7 @@ def main():
 
             try:
                 cursor = db.cursor()
+                ### Execute the relevant insert statement, with the tuple created above.
                 if is_free==1:
                     cursor.execute(sql_ins_free, data1)
                 if is_free==0:
