@@ -18,6 +18,7 @@ The following packages have to be installed in order for the Python program to r
 
 * mysql-connector-python  (version 8.0.16 was used)
 
+The python program doesn't accept any parameters so it can be run by the command: **python XE_DataEngineer_Challenge.py**
 
 Some additional comments for the implementation:
 
